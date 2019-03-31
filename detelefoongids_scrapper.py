@@ -2,6 +2,7 @@ from selenium import webdriver
 import csv
 import os
 import sys
+import time
 
 input_filename = '/home/system1/work/detelefoongids_scrapper/urls.csv'
 
@@ -26,8 +27,7 @@ if __name__ == '__main__':
     for row in csv_reader:
         url = row[0]
         browser.get(url)
-        url_link = []
-
+        time.sleep(50)
         data = browser.execute_script('return window.__data')
         name = data.get('reduxAsyncConnect').get(
             'detailApi').get('details').get('name')
